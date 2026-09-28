@@ -64,6 +64,7 @@ func (d *Pan115) List(ctx context.Context, dir model.Obj, args model.ListArgs) (
 }
 
 func (d *Pan115) Link(ctx context.Context, file model.Obj, args model.LinkArgs) (*model.Link, error) {
+	utils.Log.Infof("Link request headers: %v, client IP: %v", args.Header, args.IP)
 	if err := d.WaitLimit(ctx); err != nil {
 		return nil, err
 	}
